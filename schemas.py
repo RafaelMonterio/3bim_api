@@ -4,6 +4,12 @@ class ProdutoBase(BaseModel):
     preco: float
     quantidade: int
 
+
+class Tabelapets(Pets):
+    nome: str
+    preco: float
+    quantidade: int
+
 class ProdutoCreate(ProdutoBase):
     pass
 

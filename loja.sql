@@ -35,6 +35,14 @@ CREATE TABLE `produtos` (
   `quantidade` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+
+CREATE TABLE `PetsDB` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `preco` float NOT NULL,
+  `quantidade` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 --
 -- Despejando dados para a tabela `produtos`
 --
