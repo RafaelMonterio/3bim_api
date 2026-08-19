@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-# main.py
-=======
->>>>>>> 14d06886dc54d91a5e1442d089da045973f50cfe
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from database import Base, engine, get_db
 from models import ProdutoDB
@@ -10,6 +7,13 @@ from schemas import ProdutoCreate, ProdutoResponse
 
 Base.metadata.create_all(bind=engine) # cria as tabelas, se ainda não existirem
 app = FastAPI()
+# Habilita CORS para permitir requisições do front-end (ajuste em produção)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get('/produtos', response_model=list[ProdutoResponse])
 def listar_produtos(db: Session = Depends(get_db)):
@@ -21,8 +25,22 @@ def criar_produto(produto: ProdutoCreate, db: Session = Depends(get_db)):
     db.add(novo_produto)
     db.commit()
     db.refresh(novo_produto)
-<<<<<<< HEAD
     return novo_produto
-=======
-    return novo_produto  
->>>>>>> 14d06886dc54d91a5e1442d089da045973f50cfe
+
+
+@app.get('/produtos/{produto_id}', response_model=ProdutoResponse)
+def obter_produto(produto_id: int, db: Session = Depends(get_db)):
+    produto = db.query(ProdutoDB).filter(ProdutoDB.id == produto_id).first()
+    if produto is None:
+        raise HTTPException(status_code=404, detail='Produto não encontrado')
+    return produto
+
+@app.delete('/produtos/{produto_id}', status_code=204)
+def remover_produto(produto_id: int, db: Session = Depends(get_db)):
+    produto = db.query(ProdutoDB).filter(ProdutoDB.id == produto_id).first()
+    if produto is None:
+        raise HTTPException(status_code=404, detail='Produto não encontrado')
+    # remove o produto e confirma a transação
+    db.delete(produto)
+    db.commit()
+    return None

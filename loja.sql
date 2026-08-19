@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05/08/2026 às 21:01
+-- Tempo de geração: 05/08/2026 às 21:02
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `loja`
 --
-
+CREATE DATABASE loja;
+USE loja;
 -- --------------------------------------------------------
 
 --
@@ -39,8 +40,9 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `preco`, `quantidade`) VALUES
-(1, 'Celular', 1000, 100),
-(2, 'Celular', 1000, 100);
+(1, 'celular', 1500.99, 10),
+(3, 'celular bom', 2500.99, 10),
+(4, 'tablet', 2100.99, 8);
 
 --
 -- Índices para tabelas despejadas
@@ -61,7 +63,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
