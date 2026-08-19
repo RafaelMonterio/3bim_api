@@ -45,7 +45,7 @@ def remover_produto(produto_id: int, db: Session = Depends(get_db)):
     db.commit()
 
 
-# PUT /produtos/{id} -> atualiza um produto existente no banco
+# PUT 
 @app.put('/produtos/{produto_id}', response_model=ProdutoResponse)
 def atualizar_produto(produto_id: int, dados: ProdutoCreate, db:
 Session = Depends(get_db)):
