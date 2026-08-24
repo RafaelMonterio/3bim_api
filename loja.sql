@@ -21,17 +21,23 @@ SET time_zone = "+00:00";
 -- Banco de dados: `loja`
 --
 
+CREATE DATABASE IF NOT EXISTS `loja` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `loja`;
+
+
 -- --------------------------------------------------------
 
 --
 -- Estrutura para tabela `petsdb`
 --
 
+DROP TABLE IF EXISTS `petsdb`;
+
 CREATE TABLE `petsdb` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `especie` varchar(100) NOT NULL,
-  `raça` varchar(100) NOT NULL,
+  `raca` varchar(100) NOT NULL,
   `idade` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -40,6 +46,8 @@ CREATE TABLE `petsdb` (
 --
 -- Estrutura para tabela `produtos`
 --
+ 
+DROP TABLE IF EXISTS `produtos`;
 
 CREATE TABLE `produtos` (
   `id` int(11) NOT NULL,

@@ -8,9 +8,9 @@ class ProdutoDB(Base):
     quantidade = Column(Integer, nullable=False)
 
 class PetsDB(Base):
-    __tablename__ = 'PetsDB'
+    __tablename__ = 'petsdb'
     id = Column(Integer, primary_key=True, index=True)
     nome = Column(String(100), nullable=False)
     especie = Column(String(100), nullable=False)
-    raça = Column(String(100), nullable=False)
+    raca = Column(String(100), nullable=False)
     idade = Column(Float, nullable=False)
